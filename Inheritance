@@ -1,0 +1,61 @@
+fun main()
+{
+	var s = SquareCabin(5)
+    var r = RoundHut(7)
+    var rt = RoundTower(2)
+    with(s)
+    {
+     	println("  Square Cabin\n=================")
+    	println("Building Material : ${buildingMaterial}")
+    	println("Capacity : ${capacity}")
+    	println("HasRoom? : ${hasRoom()}")   
+    }
+    println();
+    with(r)
+    {
+        println("  Round Hut\n=================")
+    	println("Building Material : ${buildingMaterial}")
+    	println("Capacity : ${capacity}")
+    	println("HasRoom? : ${hasRoom()}")
+    }
+    println();
+    with(rt)
+    {
+        println("  Round Hut\n=================")
+    	println("Building Material : ${buildingMaterial}")
+    	println("Capacity : ${capacity}")
+    	println("HasRoom? : ${hasRoom()}")
+    }
+    println();
+}
+abstract class Dwelling(private var residence: Int)
+{
+    abstract val buildingMaterial : String
+    abstract val capacity : Int
+    fun hasRoom() : Boolean
+    {
+        if(residence < capacity)
+        	return true	
+        else
+  			return false
+    }
+}
+
+class SquareCabin(residence: Int) : Dwelling(residence)
+{
+    override val buildingMaterial = "Wood"
+    override val capacity = 6
+}
+
+class RoundHut(residence: Int) : Dwelling(residence)
+{
+    override val buildingMaterial = "Straw"
+    override val capacity = 10
+}
+
+class RoundTower(residence: Int, 
+                 var floor: Int = 2) : Dwelling(residence)
+{
+    override val buildingMaterial = "Stone"
+    override val capacity = 4*floor;
+}
